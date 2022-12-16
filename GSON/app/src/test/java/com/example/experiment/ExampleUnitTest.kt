@@ -1,4 +1,4 @@
-package com.example.logging
+package com.example.experiment
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.logging
+package com.example.experiment
 
 class PhotoPage {
     var page: Int = 0
