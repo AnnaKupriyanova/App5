@@ -69,13 +69,17 @@ fun fiveElements(wrapper: Wrapper, jsonSize: Int?, gson: Gson) {
 fun fillLists(listPNG: ArrayList<Drawable>, listLinks: ArrayList<String>, wrapper: Wrapper) {
     var lim: Int = 5
     for (index in 0 .. lim) {
-        var urlStr = "https://farm${wrapper.photos!!.photo[index].farm}.staticflickr.com/${wrapper.photos!!.photo[index].server}/${wrapper.photos!!.photo[index].id}_${wrapper.photos!!.photo[index].secret}_z.jpg"
-        var url = URL(urlStr).content as InputStream
-        var draw = Drawable.createFromStream(url, "scr name")
+        try {
+            var urlStr = "https://farm${wrapper.photos!!.photo[index].farm}.staticflickr.com/${wrapper.photos!!.photo[index].server}/${wrapper.photos!!.photo[index].id}_${wrapper.photos!!.photo[index].secret}_z.jpg"
+            var url = URL(urlStr).content as InputStream
+            var draw = Drawable.createFromStream(url, "scr name")
 
-        listPNG.add(draw)
-        listLinks.add(urlStr)
-
-        lim++
+            listPNG.add(draw)
+            listLinks.add(urlStr)
+        }
+        catch (ex: java.lang.Exception) {
+            lim++
+            continue
+        }
     }
 }
